@@ -53,7 +53,7 @@ object MSet:
     override def extract(m: MSet[A]) =
       Some(this diff m) filter (_.size == size - m.size)
     override def iterator = asMap.keysIterator
-    override def toString = s"{${asList.mkString("|")}}"
+    override def toString = asMap.map((k, v) => s"(${k}:${v})").reduce(_ + " | " + _)
     override def frequencyOf(el: A): Int = asMap.getOrElse(el, 0)
 
 def timeOf(task: Runnable): Long =
@@ -64,3 +64,4 @@ def timeOf(task: Runnable): Long =
 @main def main() =
   println(timeOf(() => MSet.ofMap(Map(("A", 10), ("B", 20), ("C", 30)))))
   println(timeOf(() => MSet.ofMap(Map(("A", 10000000), ("B", 20000000), ("C", 3000000)))))
+  println(MSet.ofMap(Map(("A", 10000000), ("B", 20000000), ("C", 3000000))).toString())
