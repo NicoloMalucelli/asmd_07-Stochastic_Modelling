@@ -46,8 +46,9 @@ object StochasticReadersAndWriters extends App:
       "% nobody was writing or reading"
   )
 
+  //println(toCTMC(rw).simulateOnce(MSet.ofMap(Map((IDLE, k), (TOKEN, 1))), new Random)(200).mkString("\n"))
   println(
-    toCTMC(rw).simulateOnce(MSet.ofMap(Map((IDLE, k), (TOKEN, 1))), new Random)(50).plot(
+    toCTMC(rw).simulateOnce(MSet.ofMap(Map((IDLE, k), (TOKEN, 1))), new Random)(200).plot(
       ("# of readers", _.frequencyOf(READING)),
       ("# of writers", _.frequencyOf(WRITING)),
       //("token", _.frequencyOf(TOKEN))

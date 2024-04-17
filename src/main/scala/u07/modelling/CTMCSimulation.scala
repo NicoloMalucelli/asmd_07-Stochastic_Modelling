@@ -80,15 +80,13 @@ object CTMCSimulation:
 
 
       def meanRelativeTimeWhile(f: S => Boolean): Double =
-        self.map(l =>
-          l.zip(l.slice(0, l.length - 1).prepended(Event(0, null)))
-            .filter(l => f.apply(l._1.state))
-            .map(l => l._1.time - l._2.time)
-            .sum
+        self.map(run =>
+          run.slice(0, run.length-1).zip(run.slice(1, run.length))
+            .filter(e => f(e._1.state))
+            .foldLeft(0.0)((acc, e) => acc + e._2.time - e._1.time)
           /
-          l.last.time
+          run.last.time
         ).mean
-
 
 //def analyze[A](map: Event[S] => A)(fold: (A, A) => A): A = ???
 

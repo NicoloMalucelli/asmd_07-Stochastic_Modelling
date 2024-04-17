@@ -19,7 +19,7 @@ extension [A](self: Map[A, Int])
     (self.keySet ++ m.keySet).foldLeft(Map.empty[A, Int])((acc, k) => acc + (k -> (m.getOrElse(k, 0) + self.getOrElse(k, 0))))
 
   def diff(m: Map[A, Int]): Map[A, Int] =
-    (self.keySet).foldLeft(Map.empty[A, Int])((acc, k) => acc + (k -> (self.getOrElse(k, 0) - m.getOrElse(k, 0))))
+    (self.keySet).foldLeft(Map.empty[A, Int])((acc, k) => acc + (k -> Math.max(0, self.getOrElse(k, 0) - m.getOrElse(k, 0))))
 
   def disjoined(m: Map[A, Int]): Boolean =
     (self.keySet intersect m.keySet).isEmpty
