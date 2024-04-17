@@ -10,7 +10,6 @@ These methods are callable on Lists of <tt>SimulationResult</tt>, where a Simula
 Doing so is possible to evaluate the generic performance of the system reducing the statistical error.
 It is possible to generate a list of simulation results by calling the method <tt>simulateNTimes<tt> which has two different versions
 based on the stop condition of the single runs:
-
 - <tt>simulateNTimes(s0: S, rnd: Random)(depth: Int)(n: Int)</tt>
 - <tt>simulateNTimes(s0: S, rnd: Random)(stopCondition: Event\[S] => Boolean)(n: Int)</tt>
 
