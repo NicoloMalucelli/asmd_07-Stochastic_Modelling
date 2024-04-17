@@ -66,10 +66,10 @@ object Chemist extends App:
   import u07.modelling.CTMCSimulation.SimulationAnalyzer.meanRelativeTimeWhile
   import u07.modelling.CTMCSimulation.plot
 
-  val numOfA = 10000000
-  val numOfB = 17000000
+  val numOfA = 100000
+  val numOfB = 170000
 
-  val simulation = toCTMC(pnet4).simulateOnce(MSet.ofMap(Map((A, numOfA), (B, numOfB), (SEQ, 1), (S1, 1))), new Random)(10_000)
+  val simulation = toCTMC(pnet4).simulateOnce(MSet.ofMap(Map((A, numOfA), (B, numOfB), (SEQ, 1), (S1, 1))), new Random)(1_000)
 
   println(
     simulation.plot(

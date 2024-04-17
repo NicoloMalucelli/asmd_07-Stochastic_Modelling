@@ -25,11 +25,9 @@ object CTMCSimulation:
         case Event(t, s) =>
           if self.transitions(s).isEmpty
           then
-            println(s.toString + " -> no choice")
             Event(t, s)
           else
             val choices = self.transitions(s) map (t => (t.rate, t.state))
-            println(s.toString + " -> " + self.transitions(s))
             val next = Stochastics.cumulative(choices.toList)
             val sumR = next.last._1
             val choice = Stochastics.draw(next)(using rnd)
