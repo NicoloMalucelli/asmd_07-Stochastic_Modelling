@@ -22,7 +22,7 @@ extension [A](self: Map[A, Int])
     (self.keySet).foldLeft(Map.empty[A, Int])((acc, k) => acc + (k -> Math.max(0, self.getOrElse(k, 0) - m.getOrElse(k, 0))))
 
   def disjoined(m: Map[A, Int]): Boolean =
-    (self.keySet intersect m.keySet).isEmpty
+    (self.filter((k, n) => n > 0).keys.toSeq intersect m.filter((k, n) => n > 0).keys.toSeq).isEmpty
 // Functional-style helpers/implementation
 object MSet:
   // Factories
