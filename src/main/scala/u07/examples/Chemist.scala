@@ -38,10 +38,10 @@ object Chemist extends App:
 
   val netInput = MSet.ofMap(Map((A, 10),(B, 17)))
 
-  val k1 = 1;
+  val k1 = 0.5;
   val k2 = 1;
-  val k3 = 1;
-  val k4 = 1;
+  val k3 = 0.5;
+  val k4 = 0.7;
 
   val pnet4 = SPN[Place](
     Trn(MSet(A), m => k1, MSet(X), MSet()),
@@ -69,7 +69,7 @@ object Chemist extends App:
   val numOfA = 100000
   val numOfB = 170000
 
-  val simulation = toCTMC(pnet4).simulateOnce(MSet.ofMap(Map((A, numOfA), (B, numOfB), (SEQ, 1), (S1, 1))), new Random)(1_000)
+  val simulation = toCTMC(pnet4).simulateOnce(MSet.ofMap(Map((A, numOfA), (B, numOfB), (SEQ, 1), (S1, 1))), new Random)(3_000)
 
   println(
     simulation.plot(
