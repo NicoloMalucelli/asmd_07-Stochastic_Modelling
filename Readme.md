@@ -54,15 +54,16 @@ I implemented the Chemist, defining it as follow:
 
 ```
 val chemist = SPN[Place](
-    Trn(MSet(A), m => 1.0, MSet(X), MSet()),
-    Trn(MSet(X, X, Y), m => 1.0, MSet(X, X, X), MSet()),
+    Trn(MSet(A), m => 0.5, MSet(X), MSet()),
+    Trn(MSet(X, X, Y), m => 0.5, MSet(X, X, X), MSet()),
     Trn(MSet(B, X), m => 1.0, MSet(Y, D), MSet()),
-    Trn(MSet(X), m => 1.0, MSet(E), MSet()),
+    Trn(MSet(X), m => 0.7, MSet(E), MSet()),
 )
 ```
 
-However, I didn't manage to replicate the chemist result and I didn't obtain a graph that oscillates since I didn't 
-find the good values to use for the transition rate constants.
+And I obtained the following result:
+
+![img.png](doc/graphChemist.png)
 
 ## Additional work
 
