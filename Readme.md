@@ -50,10 +50,10 @@ Readers and writers with the transition rate IDLE -> SELECT equals to 0.01
 
 ## Task 3: Chemist
 
-I implemented the Chemist, defining it as follow:
+I implemented the Brussellator system, defining it as follow:
 
 ```
-val chemist = SPN[Place](
+val brussellator = SPN[Place](
     Trn(MSet(A), m => 0.5, MSet(X), MSet()),
     Trn(MSet(X, X, Y), m => 0.5, MSet(X, X, X), MSet()),
     Trn(MSet(B, X), m => 1.0, MSet(Y, D), MSet()),
